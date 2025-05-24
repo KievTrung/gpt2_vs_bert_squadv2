@@ -2,7 +2,7 @@ import torch
 import os
 
 # global vars
-package = './gpt2_vs_bert_rc_squadv2/gpt2_vs_bert_rc_squadv2'
+package = './gpt2_vs_bert_rc_squadv2'
 # model_card = 'gpt2-medium'
 model_card = 'bert-large-cased'
 c = {
