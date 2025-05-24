@@ -26,7 +26,9 @@ To adjusting: epoch `-e`, learning rate `-le`, scheduler `-s`, warm up `-w`, max
 ```
 python -m gpt2_vs_bert_rc_squadv2.inferencing 
 ```
-This will run evaluating on `/gpt2_vs_bert_rc_squadv2/dataset/test.json` (generated from preprocessing step)
-To run on you own dataset, please format file as `test.json` and add option `--input_dataset ./your_test.json`
+This will run evaluating on `/gpt2_vs_bert_rc_squadv2/dataset/test.json` (generated from preprocessing step) \
+To run on you own dataset, please format file as `test.json` and add option `--input_dataset ./your_test.json` \
 For inferencing, you only need to provide `'id','context','question'` in `test.json`
+
+5. To Use model in your script, please follow instruction in `demo.py`
 
