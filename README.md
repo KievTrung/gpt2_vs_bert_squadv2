@@ -32,3 +32,14 @@ For inferencing, you only need to provide `'id','context','question'` in `test.j
 
 5. To Use model in your script, please follow instruction in `demo.py`
 
+## Get fine-tune model:
+[Go here](https://drive.google.com/drive/folders/1-v5A0QOJHx0NdAzIHdauJZGCKbF6gXts?usp=sharing) to get fine-tune model for both `bert-large-cased` and `gpt2-medium` \
+After downloaded, put both folder in `/gpt2_vs_bert_rc_squadv2/model/` \
+Then, go to `config.py` and adjust:
+```
+model_card: #either `bert-large-cased` or `gpt2-medium`
+'max_length':318
+'stride':128
+```
+You can ready for inferencing or evaluating.
+
