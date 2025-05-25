@@ -161,9 +161,7 @@ def inferencing(
     iter = 100
 
     model_.eval()
-    for i, batch in enumerate(
-        tqdm(dataloader, desc="Evaluating..." if is_eval else "inferencing...")
-    ):
+    for i, batch in enumerate(tqdm(dataloader, desc="Evaluating..." if is_eval else "inferencing...")):
         with torch.no_grad():
             outputs = model_(**batch)
             if is_eval:
@@ -194,8 +192,7 @@ def inferencing(
         metric_ = metric.compute(
             predictions=pred_ans_,
             references=[
-                {"id": sample["id"], "answers": sample["answers"]} for sample in dataset
-            ],
+                {"id": sample["id"], "answers": sample["answers"]} for sample in dataset],
         )
         print(metric_)
 

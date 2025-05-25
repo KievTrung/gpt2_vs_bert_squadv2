@@ -3,8 +3,10 @@ import os
 
 # global vars
 package = './gpt2_vs_bert_rc_squadv2'
-# model_card = 'gpt2-medium'
-model_card = 'bert-large-cased'
+model_card = 'gpt2-medium'
+# model_card = 'bert-large-cased'
+# model_card = 'gpt2'
+# model_card = 'bert-base-cased'
 c = {
     'device': 'cuda' if torch.cuda.is_available() else 'cpu',
     'dataset_path': os.path.join(package, 'dataset'),

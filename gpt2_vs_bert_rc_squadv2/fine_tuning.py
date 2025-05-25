@@ -50,7 +50,7 @@ def cls_dir(path):
 
 
 def prepare_train_dataset(
-    train_dataset_, collate_fn, batch_size=8, device="cpu", shuffle=False
+    train_dataset_, collate_fn, batch_size=8, device="cpu", shuffle=True
 ):
     train_dataset_.convert_to_tensors("pt")
     train_dataset_.to(device)
@@ -115,6 +115,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", "-e", default=3)
     parser.add_argument("--learning_rate", "-le", default=2e-5)
+    parser.add_argument("--batch", "-b", default=8)
     parser.add_argument("--scheduler", "-s", default="linear")
     parser.add_argument("--warm_up", "-w", default=0.05)
     parser.add_argument("--max_grad_norm", "-mgn", default=1.0)
@@ -144,10 +145,10 @@ def main():
     # prepare data loader
     print("preparing dataloader...")
     train_dataloader = prepare_train_dataset(
-        tokenized_train_dataset, collate_fn=default_data_collator, device=device
+        tokenized_train_dataset, batch_size=int(args.batch), collate_fn=default_data_collator, device=device
     )
     eval_dataloader, sample_to_features, offset_mapping = prepare_eval_dataset(
-        tokenized_dev_dataset, collate_fn=default_data_collator, device=device
+        tokenized_dev_dataset, batch_size=int(args.batch), collate_fn=default_data_collator, device=device
     )
 
     start_e, stop_e = 0, int(args.epochs)
@@ -169,12 +170,12 @@ def main():
     # set hyper param
     print("Setting hyperparams...")
     fused_available = "fused" in inspect.signature(AdamW).parameters
-    optimizer = AdamW(model.parameters(), lr=args.learning_rate, fused=fused_available)
+    optimizer = AdamW(model.parameters(), lr=float(args.learning_rate), fused=fused_available)
 
     lr_scheduler = get_scheduler(
         args.scheduler,
         optimizer=optimizer,
-        num_warmup_steps=int(args.warm_up * total_steps),
+        num_warmup_steps=int(float(args.warm_up) * total_steps),
         num_training_steps=total_steps,
     )
 
@@ -221,7 +222,7 @@ def main():
 
                     accelerator.backward(loss)
                     # clip gradient
-                    accelerator.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                    accelerator.clip_grad_norm_(model.parameters(), float(args.max_grad_norm))
 
                     optimizer.step()
                     lr_scheduler.step()
