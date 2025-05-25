@@ -229,8 +229,6 @@ def main():
 
                     s = f"e: {epoch}, b: {i}, l: {loss}\n"
                     f.write(s)
-                    if i == 30:
-                        break
                     if i == iter:
                         print(s, end="")
                         iter += 500
