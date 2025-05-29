@@ -207,9 +207,7 @@ def main():
     result_path = os.path.join(config.package, f"fine_tune_result_{model_card}")
     os.makedirs(result_path, exist_ok=True)
 
-    with open(os.path.join(result_path, "train_loss.txt"), mode) as f, open(
-        os.path.join(result_path, "val_loss.txt"), mode
-    ) as f2, open(os.path.join(result_path, "eval.txt"), mode) as f3:
+    with open(os.path.join(result_path, "train_loss.txt"), mode) as f, open(os.path.join(result_path, "val_loss.txt"), mode) as f2, open(os.path.join(result_path, "eval.txt"), mode) as f3:
         try:
             print("Begin finetuning...")
             for epoch in range(start_e, stop_e):

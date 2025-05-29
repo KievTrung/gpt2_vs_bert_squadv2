@@ -2,7 +2,7 @@
 This repo showcase the performance different between gpt2 and bert in term of peforming reading task and extracting information on SQUADv2 dataset. i used **gpt2-medium** (355M) and **bert-large-cased** (340M). 
 The package can also be adjust for different size of gpt2 and bert, **i had only tested on __small__ and __medium__ size** of the 2. 
 
-# How to use:
+### How to use:
 1. Install requirement package, run:
 ```
 pip install -r requirements.txt
@@ -32,7 +32,7 @@ For inferencing, you only need to provide `'id','context','question'` in `test.j
 
 5. To Use model in your script, please follow instruction in `demo.py`
 
-## Get fine-tune model:
+### Get fine-tune model:
 [Go here](https://drive.google.com/drive/folders/1-v5A0QOJHx0NdAzIHdauJZGCKbF6gXts?usp=sharing) to get fine-tune model for both `bert-large-cased` and `gpt2-medium` \
 After downloaded, put both folder in `/gpt2_vs_bert_rc_squadv2/model/` \
 Then, go to `config.py` and adjust:
