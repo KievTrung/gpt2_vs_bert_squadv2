@@ -67,7 +67,6 @@ class QaModel:
     def clear_dataloader(self, dataloader):
         print("clear dataloader...")
         dataloader.dataset.clear()
-        torch.cuda.empty_cache()
         del dataloader
         gc.collect()
 
