@@ -1,6 +1,14 @@
 # GPT2 versus BERT in reading comprehension - SQUADv2
-This repo showcase the performance different between gpt2 and bert in term of peforming reading task and extracting information on SQUADv2 dataset. i used **gpt2-medium** (355M) and **bert-large-cased** (340M). 
-The package can also be adjust for different size of gpt2 and bert, **i had only tested on __small__ and __medium__ size** of the 2. 
+This repo showcase the performance different between gpt2 and bert in term of peforming reading task and extracting information on SQUADv2 dataset. 
+To have a bigger picture on model performance, here are the models and their size that we performed evaluation on.
+| Model            | Parameters |
+|------------------|------------|
+| Gpt2             | 124M       |
+| Gpt2-medium      | 355M       |
+| Bert-base-cased  | 110M       |
+| Bert-large-cased | 340M       |
+We want to know how good gpt2 perform the task, so we compared between its size and against bert which is an encoder model (in theory, better than gpt2 which is a decoder model). 
+We keep the same hyper parameters for all models in training phase.
 
 ### How to use:
 1. Install requirement package, run:
