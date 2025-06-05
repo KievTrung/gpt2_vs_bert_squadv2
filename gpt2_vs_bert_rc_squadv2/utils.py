@@ -78,7 +78,6 @@ def postprocessing_qa_prediction(
 
         # go through each feature of the sample
         for feature_idx in sample_to_features_[sample_id]:
-            # apply softmax to start, end logit
             start_logit = start_logits[feature_idx]
             end_logit = end_logits[feature_idx]
 
@@ -89,7 +88,7 @@ def postprocessing_qa_prediction(
             if min_null_score is None or min_null_score > feature_null_score:
                 min_null_score = feature_null_score
 
-            # get the top n_best biggest probability
+            # get the top n_best biggest score
             start_idxs = np.argsort(start_logit[1:])[-1 : -n_best - 1 : -1].tolist()
             end_idxs = np.argsort(end_logit[1:])[-1 : -n_best - 1 : -1].tolist()
 

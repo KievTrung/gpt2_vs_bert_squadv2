@@ -57,12 +57,11 @@ def compute_exact(a_gold, a_pred):
 
 
 def compute_f1(a_gold, a_pred):
-    gold_toks = get_tokens(a_gold)
-    pred_toks = get_tokens(a_pred)
-    common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
-    num_same = sum(common.values())
-    if len(gold_toks) == 0 or len(pred_toks) == 0:
-        # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
+    gold_toks = get_tokens(a_gold) # get every tokens of truth ans
+    pred_toks = get_tokens(a_pred) # get every tokens of pred ans
+    common = collections.Counter(gold_toks) & collections.Counter(pred_toks) # make common token couter dict of truth and pred
+    num_same = sum(common.values()) # sum over all the common count value 
+    if len(gold_toks) == 0 or len(pred_toks) == 0: # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
         return int(gold_toks == pred_toks)
     if num_same == 0:
         return 0

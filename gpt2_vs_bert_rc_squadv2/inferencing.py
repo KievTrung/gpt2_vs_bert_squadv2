@@ -140,17 +140,14 @@ def main():
     )
     args = parser.parse_args()
 
-    # load dataset
     print("Loading test set...")
     samples = load_dataset('json', data_files=args.input_dataset)['train']
 
-    # find model
     print("Loading model...")
     model = QaModel()
     result = model.pipeline(samples)
     pred_ans = model.aggregating_result(samples, result[0] if isinstance(result, tuple) else result)
 
-    # save result
     print('Saving result...')
     save_path = config.c['result_path'] + f'_{config.c["model_card"]}'
     os.makedirs(save_path, exist_ok=True)

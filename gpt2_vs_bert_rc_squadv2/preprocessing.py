@@ -186,7 +186,7 @@ def preprocess_eval_dataset(val_dataset, tokenizer, model_card, max_length, stri
     f = lambda x: sample_ids[sample_map[x]]
     val_samples["sample_ids"] = list(map(f, [i for i in range(feature_size)]))
 
-    # only include the part we concern in offset_mapping else set to None
+    # only include context in offset_mapping else set to None
     for i in range(feature_size):
         offset = val_samples["offset_mapping"][i]
         val_samples["offset_mapping"][i] = [
