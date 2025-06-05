@@ -7,6 +7,7 @@ To have a bigger picture on model performance, here are the models and their siz
 | Gpt2-medium      | 355M       |
 | Bert-base-cased  | 110M       |
 | Bert-large-cased | 340M       |
+
 We want to know how good gpt2 perform the task, so we compared between its size and against bert which is an encoder model (in theory, better than gpt2 which is a decoder model). 
 We keep the same hyper parameters for all models in training phase.
 
